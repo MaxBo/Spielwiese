@@ -6,20 +6,18 @@ Created on Fri Jun 10 20:33:08 2016
 """
 
 from setuptools import setup, find_packages
-from cythoninstallhelpers.make_cython_extensions import make_extensions
 from cythoninstallhelpers.get_version import get_version
 
 
-package_name = 'wiver'
+package_name = 'sphnix_creation_example'
 version = get_version(package_name, __file__)
-ext_modnames = ['wiver.wiver_cython',
-                ]
+ext_modnames = []
 
 
 setup(
     name=package_name,
     version=version,
-    description="commercial trip model and pessenger demand model",
+    description="project to test sphinx documentation creation",
 
     packages=find_packages('src', exclude=['ez_setup']),
     #namespace_packages=['wiver'],
@@ -40,9 +38,4 @@ setup(
         test=[]
     ),
 
-    install_requires=[
-        'cythoninstallhelpers',
-        'cythonarrays',
-    ],
-    ext_modules=make_extensions(ext_modnames),
 )

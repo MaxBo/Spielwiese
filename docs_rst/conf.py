@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Wiver'
+project = u'sphnix_creation_example'
 copyright = u'2017, Gertz Gutsche Rümenapp'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -202,7 +202,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Wiver.tex', u'Wiver Documentation',
+  ('index', 'sphnix_creation_example.tex', u'sphnix_creation_example Documentation',
    u'Max Bohnet', 'manual'),
 ]
 
@@ -232,7 +232,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'elan', u'Wiver Documentation',
+    ('index', 'sphnix_creation_example', u'sphnix_creation_example Documentation',
      [u'Max Bohnet'], 1)
 ]
 
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Wiver', u'Wiver Documentation',
-   u'Max Bohnet', 'Wiver', 'One line description of project.',
+  ('index', 'sphnix_creation_example', u'sphnix_creation_example Documentation',
+   u'Max Bohnet', 'sphnix_creation_example', 'One line description of project.',
    'Miscellaneous'),
 ]
 

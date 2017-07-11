@@ -46,9 +46,11 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
   - export TMPDIR=`dirname $(mktemp -u -t tmp.XXXXXXXXXX)`
-  # - python setup.py install
+
+  - conda install -y sphinx
+  - pip install --user travis-sphinx
 
 script:
   # Your test script goes here
   - conda info -a
-  - conda build wiver/conda.recipe --user MaxBo --token $ANACONDA_TOKEN
+  - conda build sphnix_creation_example/conda.recipe

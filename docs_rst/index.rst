@@ -1,8 +1,8 @@
-﻿Welcome to the Wiver Commercial Trip Model documentation!
+﻿Welcome to the Sphnix Docs creation Example documentation!
 ================================
 Wiver is a Commercial Trip Model to simulate commercial vehicle tours in urban areas.
 
-This documentation contains 
+This documentation contains
 =================================
 Contents:
 
@@ -19,7 +19,7 @@ Code Documentation
 
 .. toctree::
    :maxdepth: 3
-  
+
 	wiver <wiver/wiver>
 
 Indices and tables
