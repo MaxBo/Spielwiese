@@ -54,3 +54,9 @@ script:
   # Your test script goes here
   - conda info -a
   - conda build sphnix_creation_example/conda.recipe
+
+  # build documentation
+  - travis-sphinx build --source docs_rst
+
+after_success:
+  - travis-sphinx deploy

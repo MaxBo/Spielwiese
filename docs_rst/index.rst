@@ -11,7 +11,7 @@ Description
 .. toctree::
    :maxdepth: 3
 
-	Description <description/model>
+	Description <description/description>
 
 =================================
 
@@ -20,7 +20,7 @@ Code Documentation
 .. toctree::
    :maxdepth: 3
 
-	wiver <wiver/wiver>
+	The Code <sphnix_creation_example/sphnix_creation_example>
 
 Indices and tables
 ==================
