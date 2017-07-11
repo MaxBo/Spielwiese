@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 from cythoninstallhelpers.get_version import get_version
 
 
-package_name = 'sphnix_creation_example'
+package_name = 'sphinx_creation_example'
 version = get_version(package_name, __file__)
 ext_modnames = []
 

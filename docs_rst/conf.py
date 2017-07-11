@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'sphnix_creation_example'
+project = u'sphinx_creation_example'
 copyright = u'2017, Gertz Gutsche Rümenapp'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -122,10 +122,10 @@ html_theme = 'default'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = u'Wiver Commercial Trips Model'
+html_title = u'sphinx_creation_example'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = u'Wiver'
+html_short_title = u'sphinx_creation_example'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -183,7 +183,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Wiverdoc'
+htmlhelp_basename = 'sphinx_creation_example'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -202,7 +202,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'sphnix_creation_example.tex', u'sphnix_creation_example Documentation',
+  ('index', 'sphinx_creation_example.tex', u'sphinx_creation_example Documentation',
    u'Max Bohnet', 'manual'),
 ]
 
@@ -232,7 +232,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'sphnix_creation_example', u'sphnix_creation_example Documentation',
+    ('index', 'sphinx_creation_example', u'sphinx_creation_example Documentation',
      [u'Max Bohnet'], 1)
 ]
 
@@ -246,8 +246,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'sphnix_creation_example', u'sphnix_creation_example Documentation',
-   u'Max Bohnet', 'sphnix_creation_example', 'One line description of project.',
+  ('index', 'sphinx_creation_example', u'sphinx_creation_example Documentation',
+   u'Max Bohnet', 'sphinx_creation_example', 'One line description of project.',
    'Miscellaneous'),
 ]
 
@@ -264,7 +264,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Wiver'
+epub_title = u'sphinx_creation_example'
 epub_author = u'Max Bohnet'
 epub_publisher = u'Max Bohnet'
 epub_copyright = u'2017, Max Bohnet'

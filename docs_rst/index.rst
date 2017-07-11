@@ -1,4 +1,4 @@
-﻿Welcome to the Sphnix Docs creation Example documentation!
+﻿Welcome to the Sphinx Docs creation Example documentation!
 ============================================================
 Wiver is a Commercial Trip Model to simulate commercial vehicle tours in urban areas.
 
@@ -20,7 +20,7 @@ Code Documentation
 .. toctree::
    :maxdepth: 3
 
-	The Code <sphnix_creation_example/sphnix_creation_example>
+	The Code <sphinx_creation_example/sphinx_creation_example>
 
 Indices and tables
 ==================

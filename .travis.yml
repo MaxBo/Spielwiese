@@ -53,10 +53,10 @@ install:
 script:
   # Your test script goes here
   - conda info -a
-  - conda build sphnix_creation_example/conda.recipe
+  - conda build sphinx_creation_example/conda.recipe
 
   # build documentation
-  - sphinx-apidoc -f --separate -o docs_rst/sphnix_creation_example sphnix_creation_example/src/sphnix_creation_example
+  - sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example
   - travis-sphinx --source docs_rst build
 
 after_success:
