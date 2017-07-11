@@ -47,7 +47,7 @@ install:
   - source activate test-environment
   - export TMPDIR=`dirname $(mktemp -u -t tmp.XXXXXXXXXX)`
 
-  - conda install -y sphinx
+  - conda install -y sphinx numpydoc
   - pip install --user travis-sphinx
 
 script:
