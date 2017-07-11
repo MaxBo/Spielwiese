@@ -55,6 +55,8 @@ script:
   - conda info -a
   - conda build sphinx_creation_example/conda.recipe
 
+  - conda install -y --use-local sphinx_creation_example
+
   # build documentation
   - sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example
   - travis-sphinx --source docs_rst --nowarn build

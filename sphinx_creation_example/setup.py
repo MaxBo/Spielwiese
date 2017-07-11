@@ -20,7 +20,6 @@ setup(
     description="project to test sphinx documentation creation",
 
     packages=find_packages('src', exclude=['ez_setup']),
-    #namespace_packages=['wiver'],
 
     package_dir={'': 'src'},
     package_data={'': ['*.pxd']},
