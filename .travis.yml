@@ -57,7 +57,7 @@ script:
 
   # build documentation
   - sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example
-  - travis-sphinx --source docs_rst build
+  - travis-sphinx --source docs_rst --nowarn build
 
 after_success:
   - travis-sphinx --source docs_rst deploy
