@@ -1,9 +1,9 @@
 ﻿Welcome to the Sphnix Docs creation Example documentation!
-================================
+============================================================
 Wiver is a Commercial Trip Model to simulate commercial vehicle tours in urban areas.
 
 This documentation contains
-=================================
+==============================
 Contents:
 
 Description
@@ -13,7 +13,7 @@ Description
 
 	Description <description/description>
 
-=================================
+=================================================
 
 Code Documentation
 
