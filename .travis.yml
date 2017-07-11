@@ -60,4 +60,4 @@ script:
   - travis-sphinx --source docs_rst --nowarn build
 
 after_success:
-  - travis-sphinx --source docs_rst deploy
+  - travis-sphinx deploy
