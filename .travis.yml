@@ -57,11 +57,11 @@ script:
   - conda build sphinx_creation_example/conda.recipe
 
   # build documentation
-  - if "${CREATE_DOCS}" = "1"; then
+  - if [ "${CREATE_DOCS}" = "1" ]; then
       conda install -y --use-local sphinx_creation_example;
       sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example;
       travis-sphinx --source docs_rst --nowarn build;
     fi
 
 after_success:
-  - if "${CREATE_DOCS}" = "1"; then travis-sphinx deploy; fi
+  - if [ "${CREATE_DOCS}" = "1" ]; then travis-sphinx deploy; fi
