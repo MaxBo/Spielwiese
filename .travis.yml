@@ -60,7 +60,7 @@ script:
 
   # build documentation
   - test "${CREATE_DOCS}" = "1" && sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example
-  - test "${CREATE_DOCS}" = "1" && travis-sphinx --source docs_rst --nowarn build; fi
+  - test "${CREATE_DOCS}" = "1" && travis-sphinx --source docs_rst --nowarn build
 
 after_success:
   - test "${CREATE_DOCS}" = "1" && travis-sphinx deploy
