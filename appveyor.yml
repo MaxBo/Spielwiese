@@ -79,16 +79,7 @@ build: off
 
 test_script:
   # Build the compiled extension
-  - ps: |
-     IF($env:ANACONDA_TOKEN) {
-      echo "I am in the Master build"
-      conda build sphinx_creation_example/conda.recipe
-      }
-     else {
-       echo "This Is A Pull Request Build"
-       echo "Build without the anaconda token"
-       conda build sphinx_creation_example/conda.recipe
-       }
+  - cmd: IF DEFINED ANACONDA_TOKEN (conda build sphinx_creation_example/conda.recipe) ELSE (conda build sphinx_creation_example/conda.recipe)
 
 
 after_test:
