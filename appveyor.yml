@@ -79,14 +79,14 @@ build: off
 test_script:
   # Build the compiled extension
   - IF DEFINED ANACONDA_TOKEN (
-      ECHO %ANACONDA_TOKEN% &&
-      conda build sphinx_creation_example/conda.recipe) &&
-    ELSE (ECHO This Is A Pull Request Build)
+      ECHO I am in the Master build &&
+      conda build sphinx_creation_example/conda.recipe) ELSE
+     (ECHO This Is A Pull Request Build)
 
     IF NOT DEFINED ANACONDA_TOKEN  (
       ECHO I am in the Pull Request Build &&
-      conda build sphinx_creation_example/conda.recipe) &&
-    ELSE (ECHO Using The Release Key File)
+      conda build sphinx_creation_example/conda.recipe) ELSE
+     (ECHO Using The Release Key File)
 
 after_test:
 
