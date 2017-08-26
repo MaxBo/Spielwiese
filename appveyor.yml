@@ -81,8 +81,12 @@ test_script:
   - ps: |
      IF($ANACONDA_TOKEN) {
       echo "I am in the Master build"
-      conda build sphinx_creation_example/conda.recipe}
-     else {echo ""This Is A Pull Request Build"}
+      conda build sphinx_creation_example/conda.recipe
+      }
+     else {
+       echo "This Is A Pull Request Build"
+       echo "Do something without the anaconda token"
+       }
 
 
 after_test:
