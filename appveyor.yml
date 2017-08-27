@@ -78,6 +78,7 @@ build: off
 
 test_script:
   # Build the compiled extension
+  - cmd: conda install -y -n root cythoninstallhelpers
   - cmd: conda list
   - cmd: conda build sphinx_creation_example/conda.recipe
 #  - cmd: IF DEFINED ANACONDA_TOKEN (conda build sphinx_creation_example/conda.recipe) ELSE (conda build sphinx_creation_example/conda.recipe)
