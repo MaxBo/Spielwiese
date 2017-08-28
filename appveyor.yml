@@ -57,7 +57,7 @@ install:
 
     - "echo [pypi] > %USERPROFILE%\\.pypirc"
     - "echo username = MaxBo >> %USERPROFILE%\\.pypirc"
-    - "echo password = %PYPIPASSWORD% >> %USERPROFILE%\\.pypirc"
+    - ps: Add-Content -Value "password = $env:PYPIPASSWORD" -Path $env:USERPROFILE\.pypirc
     - "more %USERPROFILE%\\.pypirc"
     - ping -n 1000 127.0.0.1 > NUL
 
