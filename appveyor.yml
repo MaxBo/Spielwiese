@@ -15,7 +15,7 @@ environment:
     secure: FRnYhL1Dt42VxtPRqS7jPoV4EVtRkQD6ZUm4F8gzmcu6pFeuJfeMA01EYWfa2ETy
 
   PYPIPASSWORD:
-    secure: jhFQ66LUngL52hfDTUhZdg==
+    secure: R7Hpmou1Q3ysPCVbkhvdBg==
 
   matrix:
 #    - TARGET_ARCH: x64
@@ -59,7 +59,6 @@ install:
     - "echo username = MaxBo >> %USERPROFILE%\\.pypirc"
     - ps: Add-Content -Value "password = $env:PYPIPASSWORD" -Path $env:USERPROFILE\.pypirc
     - "more %USERPROFILE%\\.pypirc"
-    - ping -n 1000 127.0.0.1 > NUL
 
     # Add path, activate `conda` and update conda.
     - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
