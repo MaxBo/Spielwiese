@@ -1,0 +1,17 @@
+sphinx\_creation\_example package
+=================================
+
+Submodules
+----------
+
+.. toctree::
+
+   sphinx_creation_example.run
+
+Module contents
+---------------
+
+.. automodule:: sphinx_creation_example
+    :members:
+    :undoc-members:
+    :show-inheritance:

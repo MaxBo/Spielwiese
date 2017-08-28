@@ -1,0 +1,7 @@
+sphinx_creation_example
+=======================
+
+.. toctree::
+   :maxdepth: 4
+
+   sphinx_creation_example

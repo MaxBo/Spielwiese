@@ -1,0 +1,7 @@
+sphinx\_creation\_example\.run module
+=====================================
+
+.. automodule:: sphinx_creation_example.run
+    :members:
+    :undoc-members:
+    :show-inheritance:
