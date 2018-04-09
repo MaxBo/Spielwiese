@@ -113,7 +113,7 @@ after_test:
 
 
 artifacts:
-  # bdist_wheel puts your built wheel in the dist directory
+  # python setup.py bdist_wheel sdist puts your built wheel and the source distribution in the dist directory
   - path: dist\*
 
 on_success:
