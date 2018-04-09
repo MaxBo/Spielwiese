@@ -73,6 +73,7 @@ script:
     
   # build pypi wheel and sdist
   - cd sphinx_creation_example
+  - conda install -y cythoninstallhelpers
   - python setup.py bdist_wheel sdist
 
 after_success:
