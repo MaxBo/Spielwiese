@@ -70,17 +70,20 @@ install:
 
     - cmd: set PYTHONUNBUFFERED=1
 
+    # Conda build tools.
+    - cmd: conda config --add channels conda-forge
+    - cmd: conda install -n root --quiet --yes obvious-ci conda-build
+    #- cmd: obvci_install_conda_build_tools.py
+
     # Ensure defaults and conda-forge channels are present.
     - cmd: conda config --set show_channel_urls true
     - cmd: conda config --remove channels defaults
+    - cmd: conda config --remove channels conda-forge
     - cmd: conda config --add channels defaults
     - cmd: conda config --add channels conda-forge
     - cmd: conda config --add channels MaxBo
 
-    # Conda build tools.
-    - cmd: conda install -n root --quiet --yes obvious-ci
-    #- cmd: obvci_install_conda_build_tools.py
-    - cmd: conda install -y -n root conda-build
+
     - cmd: conda create -y -n test-environment python=%PYTHON_VERSION% twine
     - cmd: activate test-environment
 
