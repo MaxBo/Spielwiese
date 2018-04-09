@@ -12,10 +12,13 @@ environment:
   CMD_IN_ENV: "cmd /E:ON /V:ON /C obvci_appveyor_python_build_env.cmd"
 
   ANACONDA_TOKEN:
-    secure: FRnYhL1Dt42VxtPRqS7jPoV4EVtRkQD6ZUm4F8gzmcu6pFeuJfeMA01EYWfa2ETy
+    secure: 4qFgECceCojFkzlHVm2wF6Ric9B6Cb/Ks/GwDPbEOXZwBFBxr+9dSX3333aIxprA
 
-  PYPIPASSWORD:
-    secure: R7Hpmou1Q3ysPCVbkhvdBg==
+  TWINE_REPOSITORY: https://testpypi.python.org
+  TWINE_USERNAME: MaxBo
+
+  TWINE_PASSWORD:
+    secure: gP/K3qjmop4350VEPvTfQg==
 
   matrix:
 #    - TARGET_ARCH: x64
@@ -24,13 +27,13 @@ environment:
 #      CONDA_INSTALL_LOCN: C:\\Miniconda-x64
 
 #    - TARGET_ARCH: x64
-#      CONDA_NPY: 111
+#      CONDA_NPY: 114
 #      CONDA_PY: 35
 #      PYTHON_VERSION: 3.5
 #      CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
 
     - TARGET_ARCH: x64
-      CONDA_NPY: 111
+      CONDA_NPY: 114
       CONDA_PY: 36
       PYTHON_VERSION: 3.6
       CONDA_INSTALL_LOCN: C:\\Miniconda35-x64
@@ -47,7 +50,7 @@ install:
     # directly to master instead of just PR builds (or the converse).
     # credits: JuliaLang developers.
 
-    - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+    #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
     - ps: if ($env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_BUILD_NUMBER -ne ((Invoke-RestMethod `
          https://ci.appveyor.com/api/projects/$env:APPVEYOR_ACCOUNT_NAME/$env:APPVEYOR_PROJECT_SLUG/history?recordsNumber=50).builds | `
@@ -55,10 +58,10 @@ install:
            throw "There are newer queued builds for this pull request, failing early." }
 
 
-    - "echo [pypi] > %USERPROFILE%\\.pypirc"
-    - "echo username = MaxBo >> %USERPROFILE%\\.pypirc"
-    - ps: Add-Content -Value "password = $env:PYPIPASSWORD" -Path $env:USERPROFILE\.pypirc
-    - "more %USERPROFILE%\\.pypirc"
+    #- "echo [pypi] > %USERPROFILE%\\.pypirc"
+    #- "echo username = MaxBo >> %USERPROFILE%\\.pypirc"
+    #- ps: Add-Content -Value "password = $env:PYPIPASSWORD" -Path $env:USERPROFILE\.pypirc
+    #- "more %USERPROFILE%\\.pypirc"
 
     # Add path, activate `conda` and update conda.
     - cmd: set "PATH=%CONDA_INSTALL_LOCN%\\Scripts;%CONDA_INSTALL_LOCN%\\Library\\bin;%PATH%"
@@ -78,11 +81,12 @@ install:
     - cmd: conda install -n root --quiet --yes obvious-ci
     #- cmd: obvci_install_conda_build_tools.py
     - cmd: conda install -y -n root conda-build
-    - cmd: conda create -y -n test-environment python=%PYTHON_VERSION%
+    - cmd: conda create -y -n test-environment python=%PYTHON_VERSION% twine
     - cmd: activate test-environment
 
     - cmd: set TMPDIR=%TMP%
     - ps: $env:TMPDIR=$env:TMP
+    - cmd: set CONDA_BLD_PATH=%TMPDIR%
 
 
 # Skip .NET project specific build phase.
@@ -92,26 +96,20 @@ test_script:
   # Build the compiled extension
   - cmd: conda install -y -n root cythoninstallhelpers
   - cmd: conda list
-  - cmd: conda build sphinx_creation_example/conda.recipe
-#  - cmd: IF DEFINED ANACONDA_TOKEN (conda build sphinx_creation_example/conda.recipe) ELSE (conda build sphinx_creation_example/conda.recipe)
+  #- cmd: conda build sphinx_creation_example/conda.recipe
+  - cmd: IF DEFINED ANACONDA_TOKEN (conda build sphinx_creation_example/conda.recipe --user MaxBo --token %ANACONDA_TOKEN%) ELSE (conda build sphinx_creation_example/conda.recipe)
 
 
 after_test:
 
-#  - ps: $package1 = "sphinx_creation_example"
-#  - ps: ([xml]$finalXml) = Get-Content (Resolve-Path $env:TMPDIR\junit_$package1.xml)
-
-#  - ps: ([xml]$finalXml).Save("$env:TMPDIR\junit_final.xml")
-#  - ps: $wc = New-Object 'System.Net.WebClient'
-#  - ps: $wc.UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path $env:TMPDIR\junit_final.xml))
-
   - cmd: conda install -y cythoninstallhelpers
   - cmd: cd sphinx_creation_example
   - "%CMD_IN_ENV% python setup.py bdist_wheel sdist"
-  - cmd: cd ..
 
 
 artifacts:
   # bdist_wheel puts your built wheel in the dist directory
-  - path: sphinx_creation_example\dist\*
+  - path: dist\*
 
+on_success:
+  - cmd: IF %APPVEYOR_REPO_TAG%==true ( twine upload --skip-existing dist\* )
