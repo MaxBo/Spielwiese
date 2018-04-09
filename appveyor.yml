@@ -78,6 +78,8 @@ install:
     - cmd: conda config --add channels defaults
     - cmd: conda config --add channels conda-forge
     - cmd: conda config --add channels MaxBo
+    
+    - cmd: conda config --set anaconda_upload yes
 
     # Conda build tools.
     - cmd: conda install -n root --yes yaml
