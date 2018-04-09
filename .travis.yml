@@ -17,6 +17,7 @@ matrix:
 env:
   global:
     # Anaconda
+    - ANACONDA_USERNAME=MaxBo
     - secure: kWIJPammSoqLZVSeAaDeG9hEptHX3uXw1nnMepALXvLEd2ZKpyeieym51nJXLK8vZtfgJ5lNI7gUF2dNldj5xdiYNCGZqvIQBU0Nle9DeepRcucOMmsDZPHkODyJ0dRn3WTtJF+owaj+LFd9VbeBDg2vcj5LOIb53kTym0uXefZDT6fnkBG2BUh2Wyp81H9xvMqyM2J8FfPMLdgjOcaP7M6OH0a6BOLoPdUMvoqjmlnd1s7CpFZj+tBImHkI9GaxZRJq5fySQXTXjuEOTqfMMfyk4yGKeZ+svAbhcoiuw6jMdNTwGpOPPV+c35HTEIJ23gNc08FQ5lGNFo05lf5ex4D8Ri7F7JOkRkn58W6vqjWb2mjhLXV+Md9dDU0UkZd78F+28uBJnVqJ2ll3wdDznwQ7i1U9ZH2As90YveIrYJv0gD7kqXu4BBwmXAZAytSQ/NFP2GsNEjIrk6+wtR/H2XVncpvvgLHCtz2pvUxh1Gq0bqbj3AZPewKUKKEJ/Ilct3KHMlkfQNE0j8OE4RrvHwk1bIvnUnWois6vvuouJ2KrTKX4Y+o8VJOFSS5yMCP38YzBH0ID6syWLdDaf7rSOzg6Z+eR1qE0E98Z6XmH+m3mE1n+fyAu9uxMMd8uGkPcDUIRI0W11q+Xf+NYz2ID8lu2fb8j/IKKYDAubQyIGeQ=
     - TWINE_USERNAME=MaxBo
     - TWINE_REPOSITORY=testpypi
@@ -54,6 +55,7 @@ install:
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
   - export TMPDIR=`dirname $(mktemp -u -t tmp.XXXXXXXXXX)`
+  - export CONDA_BLD_PATH=$TMPDIR
 
   - conda install -y sphinx numpydoc twine
   - pip install --user travis-sphinx
@@ -62,7 +64,7 @@ script:
   # Your test script goes here
   - conda info -a
   - conda config --set anaconda_upload yes
-  - conda build sphinx_creation_example/conda.recipe --user MaxBo --token $ANACONDA_TOKEN
+  - conda build sphinx_creation_example/conda.recipe
 
   # build documentation
   - if [ "${CREATE_DOCS}" = "1" ]; then
@@ -79,3 +81,14 @@ script:
 after_success:
   - if [ "${CREATE_DOCS}" = "1" ]; then travis-sphinx deploy; fi
   - twine upload --skip-existing dist/*
+  
+  # Change permissions for Anaconda deployment script
+  - chmod +x ../deploy_anaconda.sh
+
+deploy:
+ # Deploy to Anaconda.org
+  - provider: script
+    script: ../deploy_anaconda.sh travis-sphinx deploy
+    on:
+      tags: true
+    skip_cleanup: true
