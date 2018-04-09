@@ -57,7 +57,7 @@ install:
   - export TMPDIR=`dirname $(mktemp -u -t tmp.XXXXXXXXXX)`
   - export CONDA_BLD_PATH=$TMPDIR
 
-  - conda install -y sphinx numpydoc twine
+  - conda install -y sphinx numpydoc twine anaconda-client
   - pip install --user travis-sphinx
 
 script:
@@ -88,7 +88,7 @@ after_success:
 deploy:
  # Deploy to Anaconda.org
   - provider: script
-    script: ./deploy_anaconda.sh travis-sphinx deploy
+    script: ./deploy_anaconda.sh sphinx_creation_example
   #  on:
   #    tags: true
     skip_cleanup: true
