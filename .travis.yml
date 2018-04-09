@@ -81,14 +81,14 @@ script:
 after_success:
   - if [ "${CREATE_DOCS}" = "1" ]; then travis-sphinx deploy; fi
   - twine upload --skip-existing dist/*
-  
+  - cd ..
   # Change permissions for Anaconda deployment script
-  - chmod +x ../deploy_anaconda.sh
+  - chmod +x ./deploy_anaconda.sh
 
 deploy:
  # Deploy to Anaconda.org
   - provider: script
-    script: ../deploy_anaconda.sh travis-sphinx deploy
-    on:
-      tags: true
+    script: ./deploy_anaconda.sh travis-sphinx deploy
+  #  on:
+  #    tags: true
     skip_cleanup: true
