@@ -39,7 +39,7 @@ install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
-  - conda install conda-build=2.1
+  - conda install conda-build
   - conda install anaconda-client
   # Useful for debugging any issues with conda
   - conda info -a
@@ -50,7 +50,7 @@ install:
   - conda config --add channels conda-forge
   - conda config --add channels MaxBo
 
-  
+
   # test environment
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION
   - source activate test-environment
@@ -72,7 +72,7 @@ script:
       sphinx-apidoc -f --separate -o docs_rst/sphinx_creation_example sphinx_creation_example/src/sphinx_creation_example;
       travis-sphinx build --source docs_rst --nowarn;
     fi
-    
+
   # build pypi wheel and sdist
   - cd sphinx_creation_example
   - conda install -y cythoninstallhelpers
