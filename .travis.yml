@@ -81,4 +81,4 @@ script:
 after_success:
   - if [ "${CREATE_DOCS}" = "1" ]; then travis-sphinx deploy; fi
   - twine upload --skip-existing dist/*
-  - anaconda upload --user $ANACONDA_USERNAME -t $ANACONDA_TOKEN $CONDA_BLD_PATH/linux-64/sphinx_creation_example-*.tar.bz2
+  - anaconda -t $ANACONDA_TOKEN upload --user $ANACONDA_USERNAME $CONDA_BLD_PATH/linux-64/sphinx_creation_example-*.tar.bz2
